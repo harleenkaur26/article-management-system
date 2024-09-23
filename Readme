@@ -1,0 +1,60 @@
+Article Management
+A web application where users can create, update and delete an article. Users can also view and like articles of other users and also follow and unfollow them.
+
+TechStack
+Backend: Node.js, Express
+Frontend: React
+Database: MongoDB
+Other: REST API
+Prerequisites
+Node.js and npm installed
+MongoDB installed and running
+Environment Variables
+To run this project, you will need to add the following environment variables to your .env file
+
+Installation
+Install my-project with npm
+
+Backend Configuration
+Clone the repository
+
+git clone https://github.com/harleenkaur26/article-management-system
+Navigate to the server directory
+
+cd server
+Install dependencies
+
+npm install
+Set up environment variables
+
+Create a .env file in the root directory
+Add the following variables:
+MONGODB_URI=your_mongodb_connection_string
+TOKEN_SECRET=your_secret
+PORT=5000
+
+Start the development server
+
+node index.js
+
+Frontend Configuration
+Navigate to the client directory
+
+cd client
+Install dependencies
+
+npm install
+Start the Frontend
+
+npm start
+
+Deployment
+To deploy this project run
+
+npm run deploy
+
+Contributing
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
+
+🚀 About Me
+I'm a full stack developer...
