@@ -21,20 +21,6 @@ const useGetMyTweets = (id) => {
     }
   };
 
-  // const fetchMyTweets = useCallback(async () => {
-  //   try {
-  //     const res = await axios.get(`${TWEET_API_END_POINT}/alltweets/${id}`, {
-  //       withCredentials: true,
-  //     });
-  //     dispatch(getAllTweets(res.data.tweets));
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // }, [id, dispatch]);
-  
-
-
-
   const followingTweetHandler = async () => {
     try {
       axios.defaults.withCredentials = true;

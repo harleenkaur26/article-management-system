@@ -16,15 +16,24 @@ const CreatePost = () => {
   const dispatch = useDispatch();
   const fileInputRef = useRef(null);
 
+  const profile =
+    "https://res.cloudinary.com/practicaldev/image/fetch/s--wUE2uVbG--/c_imagga_scale,f_auto,fl_progressive,h_900,q_auto,w_1600/https://thepracticaldev.s3.amazonaws.com/i/k1be7tgezvuu845615uf.png";
+
+  const [imgData, setImgData] = useState(profile);
+
   const submitHandler = async () => {
     try {
       const formData = new FormData();
       formData.append("title", title);
       formData.append("description", description);
       formData.append("id", user?._id);
-      if (fileInputRef.current.files[0]) {
-        formData.append("image", fileInputRef.current.files[0]); // Append the file
-      }
+      console.log(imgData);
+
+      formData.append("image", imgData);
+
+      // if (fileInputRef.current.files[0]) {
+      //   formData.append("image", fileInputRef.current.files[0]); // Append the file
+      // }
 
       const res = await axios.post(
         `http://localhost:5000/api/create`,
@@ -73,6 +82,16 @@ const CreatePost = () => {
       setImage(file); // Save the image file to state
     }
   };
+
+  function files(e) {
+    console.log(e.target.value, e.target.files);
+    setImgData(URL.createObjectURL(e.target.files[0]));
+    console.log(URL.createObjectURL(e.target.files[0]));
+    // setFormData((prevs) => ({
+    //   ...prevs,
+    //   imageUrl: URL.createObjectURL(e.target.files[0]),
+    // }));
+  }
 
   return (
     <div className="w-[100%]">
@@ -131,20 +150,16 @@ const CreatePost = () => {
 
           <div className="flex items-center justify-between p-4 border-b border-gray-300">
             <div className="flex items-center">
-              <CiImageOn
-                size="24px"
-                className="cursor-pointer"
-                onClick={uploadImage}
-              />
-              <input
-                type="file"
-                ref={fileInputRef}
-                onChange={handleImageUpload}
-                style={{ display: "none" }} // Hide the input
-              />
-              {fileName && (
-                <span className="ml-2 text-gray-600">{fileName}</span>
-              )}
+              <span className="w-96 h-1/5  flex justify-between items-center border-2 border-inputbr p-2 ">
+                <img src={imgData} className="h-16 w-16 rounded-full" alt="" />
+                <input
+                  type="file"
+                  className="shrink-0 h-9 file:rounded-full  file:w-2/3 file:h-full file:border-slate-600 text-slate-500"
+                  // className="shrink-0 h-9 file:rounded-full file:bg-bars file:w-2/3 file:h-full file:outline-none file:border-none file:text-white text-slate-500"
+                  placeholder="choose"
+                  onChange={files}
+                />
+              </span>
             </div>
             <button
               onClick={submitHandler}

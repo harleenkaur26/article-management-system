@@ -4,9 +4,11 @@ import { User } from "../models/userSchema.js";
 // Create a tweet
 export const createTweet = async (req, res) => {
   try {
-    const { title, description, id } = req.body;
-    const image = req.file ? req.file.path : null; // Get the file path if an image is uploaded
+    const { title, description, id, image } = req.body;
+    // const {image} = req.file ? req.file.path : null; // Get the file path if an image is uploaded
 
+      console.log("************IMAGE***************",image);
+      console.log(req.body);
     // Validate required fields
     if (!title || !description || !id) {
       return res.status(400).json({
@@ -30,7 +32,10 @@ export const createTweet = async (req, res) => {
       description,
       userId: id,
       userDetails: user,
-      image,
+      image:  {
+        url: image,
+        filename: "image",
+      },
     });
 
     // Successful response
