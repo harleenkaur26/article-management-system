@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Tweet from "./Tweet"; // Assuming you already have the Tweet component
+import Tweet from "./Tweet"; 
 import { TWEET_API_END_POINT } from "../utils/constant";
 import toast from "react-hot-toast";
 
@@ -15,9 +15,9 @@ const Explore = () => {
         const response = await axios.get(`${TWEET_API_END_POINT}/explore`, {
           withCredentials: true,
         });
-        // console.log("Response:", response); // Log the response to check the status and data
+        // console.log("Response:", response); 
         if (response.status === 200) {
-          setTweets(response.data.tweets); // Set the state with fetched tweets
+          setTweets(response.data.tweets); 
         } else {
           toast.error("Failed to fetch tweets");
         }
@@ -32,7 +32,7 @@ const Explore = () => {
 
   return (
     <div className="explore-tweets">
-      <h1 className="text-xl font-bold mb-4">Explore Tweets</h1>
+      <h1 className="text-2xl font-bold mb-4 mt-6 text-center">Explore Tweets</h1>
       {tweets.length > 0 ? (
         tweets.map((tweet) => <Tweet key={tweet._id} tweet={tweet} />)
       ) : (

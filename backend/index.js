@@ -26,10 +26,8 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 // api
-// app.use("/api/v1/user",userRoute);
 app.use('/api', userRoute);
 app.use('/api', tweetRoute);
-// app.use("/api/v1/tweet", tweetRoute);
  
 
 app.listen(process.env.PORT,() => {

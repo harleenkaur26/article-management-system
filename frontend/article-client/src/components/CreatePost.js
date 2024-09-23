@@ -31,22 +31,18 @@ const CreatePost = () => {
 
       formData.append("image", imgData);
 
-      // if (fileInputRef.current.files[0]) {
-      //   formData.append("image", fileInputRef.current.files[0]); // Append the file
-      // }
-
       const res = await axios.post(
         `http://localhost:5000/api/create`,
         formData,
         {
           headers: {
-            "Content-Type": "multipart/form-data", // Set the correct content type
+            "Content-Type": "multipart/form-data",
           },
           withCredentials: true,
         }
       );
 
-      dispatch(getRefresh()); // Trigger the refresh of tweets
+      dispatch(getRefresh());
       if (res.data.success) {
         toast.success(res.data.message);
       } else {
@@ -78,8 +74,8 @@ const CreatePost = () => {
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
     if (file) {
-      setFileName(file.name); // Set the file name to state
-      setImage(file); // Save the image file to state
+      setFileName(file.name);
+      setImage(file);
     }
   };
 
@@ -87,10 +83,6 @@ const CreatePost = () => {
     console.log(e.target.value, e.target.files);
     setImgData(URL.createObjectURL(e.target.files[0]));
     console.log(URL.createObjectURL(e.target.files[0]));
-    // setFormData((prevs) => ({
-    //   ...prevs,
-    //   imageUrl: URL.createObjectURL(e.target.files[0]),
-    // }));
   }
 
   return (
@@ -154,8 +146,7 @@ const CreatePost = () => {
                 <img src={imgData} className="h-16 w-16 rounded-full" alt="" />
                 <input
                   type="file"
-                  className="shrink-0 h-9 file:rounded-full  file:w-2/3 file:h-full file:border-slate-600 text-slate-500"
-                  // className="shrink-0 h-9 file:rounded-full file:bg-bars file:w-2/3 file:h-full file:outline-none file:border-none file:text-white text-slate-500"
+                  className="shrink-0 h-9 file:rounded-full file:w-2/3 file:h-full file:border-slate-200 text-slate-500"
                   placeholder="choose"
                   onChange={files}
                 />

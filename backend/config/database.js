@@ -6,7 +6,7 @@ dotenv.config({
   path: "../config/.env",
 });
 
-mongoose.set("debug", true); // Enable mongoose debug logging
+mongoose.set("debug", true); 
 
 const databaseConnection = async () => {
   try {
